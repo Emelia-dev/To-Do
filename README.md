@@ -1,7 +1,7 @@
 # To-Do
 To Do Manager
 
-Descripton/Features: 
+Description/Features: 
   - basic to do manager
   - integrated with email
   - animated gradient background
