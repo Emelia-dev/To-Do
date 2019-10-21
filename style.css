@@ -1,7 +1,18 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
 /* FONTS */
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Mansalva&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Kalam&display=swap');
+
 /* Background animation gradient */
 body{
   margin: 0;
@@ -25,41 +36,128 @@ body{
     background-color: #9DCFFF;
   }
 }
-.background-container{
+
+.container {
   width: 100%;
-  position: absolute;
-  top: 35%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  height: 90vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  overflow-y: auto;
 }
 
-.header-box{
-  border: 2px rgba(255,255,255, 0.6) solid;
-  display: block;
-  margin: auto;
-  width: 40%;
-  color: rgba(255,255,255);
-  height: 100px;
+.app-title {
   text-align: center;
-  vertical-align: middle;
-  line-height: 100px;
-  font-size: 90px;
+  margin-bottom: 20px;
+  font-size: 80px;
+  opacity: 0.5;
   font-family: 'Mansalva', cursive;
 }
 
-#input{
-  margin: auto;
-  display: block;
-  margin-top: 30%;
-  width: 60%;
-  height: 50px;
-  font-size: 24px;
-  font-family: 'Kalam', cursive;
-  padding: 10px;
-  border: none;
-  background-color: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  color:#333333;
+svg {
+  width: 64px;
+  height: 64px;
 }
-#input:focus{
-  box-shadow: 0 4px 2px -2px rgba(255,255,255, 0.8) inset;
+
+.todo-list {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.todo-item {
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-item span {
+  flex-grow: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.done span {
+  text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+.tick {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #333;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tick::before {
+  content: '✓';
+  font-size: 18px;
+  display: none;
+}
+
+.done .tick::before {
+  display: inline;
+}
+
+.delete-todo {
+  border: none;
+  background-color: transparent;
   outline: none;
+  cursor: pointer;
+}
+
+.delete-todo svg {
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 3px solid #333;
+}
+
+.empty-state {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  opacity: 0.7;
+}
+
+.checklist-icon {
+  margin-bottom: 20px;
+}
+
+.empty-state__title, .empty-state__description {
+  margin-bottom: 20px;
+}
+
+.todo-list:empty {
+  display: none;
+}
+
+.todo-list:empty + .empty-state {
+  display: flex;
 }
